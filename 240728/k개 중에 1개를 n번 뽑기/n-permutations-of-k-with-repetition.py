@@ -1,6 +1,6 @@
 import sys
 
-k, n = map(int, sys.stdin.readline().split())
+n, k = map(int, sys.stdin.readline().split())
 answer = []
 
 def print_answer():
