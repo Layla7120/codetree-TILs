@@ -3,37 +3,38 @@ import sys
 n, m = map(int, sys.stdin.readline().split())
 board = []
 
-for y in range(n):
+for i in range(n):
     board.append(list(map(int, sys.stdin.readline().split())))
 
-def find_square(n, m):
-    max_size = 0
-    for x in range(m):
-        for y in range(n):
-            if board[x][y] > 0:
-                width = 1
-                for i in range(y + 1, n):
-                    if board[x][i] > 0:
-                        width += 1
+max_size = 0
+for x in range(n):
+    for y in range(m):
+        if board[x][y] > 0:
+            width = 0
+            for i in range(y + 1, m):
+                if board[x][i] > 0:
+                    width += 1
+                else:
+                    break
+            height = 0
+            for j in range(x + 1, n):
+                count = 0
+                for k in range(y, y + width):
+                    if board[j][k] > 0:
+                        count += 1
                     else:
                         break
-                height = 1
-                for j in range(x + 1, m):
-                    count = 0
-                    for x in range(y, y + width):
-                        if board[j][x] > 0:
-                            count += 1
-                        else:
-                            break
-                    if count == 0:
-                        if max_size < width * height:
-                            max_size = width * height
-                        break
-                    else:
+                if count == 0:
+                    if max_size < width * height:
+                        max_size = width * height
+                    break
+                else:
+                    if count < width:
                         width = count
-                        height += 1
-            if max_size < width * height:
-                            max_size = width * height  
-    return max_size
+                    height += 1
+            final_width = width + 1
+            final_height = height + 1
+            if max_size < final_width * final_height:
+                max_size = final_width * final_height
 
-print(find_square(n, m))
+print(max_size)
