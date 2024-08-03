@@ -7,26 +7,24 @@ for i in range(n):
     board.append(list(map(int, sys.stdin.readline().split())))
 
 max_size = 0
-for x in range(n):
-    for y in range(m):
-        if board[x][y] > 0:
+for row in range(n):
+    for col in range(m):
+        if board[row][col] > 0:
             width = 0
-            for i in range(y + 1, m):
-                if board[x][i] > 0:
+            for i in range(col + 1, m):
+                if board[row][i] > 0:
                     width += 1
                 else:
                     break
             height = 0
-            for j in range(x + 1, n):
+            for j in range(row + 1, n):
                 count = 0
-                for k in range(y, y + width):
+                for k in range(col, col + width):
                     if board[j][k] > 0:
                         count += 1
                     else:
                         break
                 if count == 0:
-                    if max_size < width * height:
-                        max_size = width * height
                     break
                 else:
                     if count < width:
