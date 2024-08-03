@@ -5,7 +5,6 @@ seq = list()
 def is_beautiful():
     i = 0
     while i < n:
-        print(i, seq[i])
         if i + seq[i] - 1 >= n:
             return False
         for j in range(i, i + seq[i]):
