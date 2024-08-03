@@ -10,7 +10,7 @@ max_size = 0
 for row in range(n):
     for col in range(m):
         if board[row][col] > 0:
-            width = 0
+            width = 1
             for i in range(col + 1, m):
                 if board[row][i] > 0:
                     width += 1
@@ -18,8 +18,8 @@ for row in range(n):
                     break
             height = 1
             for j in range(row + 1, n):
-                count = 0
-                for k in range(col, col + width + 1):
+                count = 1
+                for k in range(col, col + width):
                     if board[j][k] > 0:
                         count += 1
                     else:
@@ -30,7 +30,7 @@ for row in range(n):
                     if count < width:
                         width = count
                     height += 1
-            final_width = width + 1
+            final_width = width
             final_height = height
 
             if max_size < final_width * final_height:
