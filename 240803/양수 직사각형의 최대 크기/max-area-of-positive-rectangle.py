@@ -35,5 +35,7 @@ for row in range(n):
 
             if max_size < final_width * final_height:
                 max_size = final_width * final_height
+if max_size == 0:
+    max_size = -1
 
 print(max_size)
