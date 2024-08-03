@@ -7,7 +7,6 @@ num_arr = []
 
 # 아름다운 지 확인
 def is_beautiful(num_arr):
-    global total
     pin_start = 0
     idx = 0
     while True:
