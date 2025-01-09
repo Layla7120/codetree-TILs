@@ -8,17 +8,19 @@ def print_answer():
         print(elem, end=" ")
     print()
 
-def choose(curr_num):
-    if curr_num == M + 1:
-        print_answer()
+def choose(curr_num, cnt):
+    if curr_num == N + 1:
+        if cnt == M:
+            print_answer()
         return
 
-    for i in range(1,  N + 1):
-        if len(answer) == 0 or answer[-1] < i:
-            answer.append(i)
-            choose(curr_num + 1)
-            answer.pop()
+    answer.append(curr_num)
+    choose(curr_num + 1, cnt + 1)
+    answer.pop()
+
+    # 패스하는 경우
+    choose(curr_num + 1, cnt)
 
     return
 
-choose(1)
+choose(1, 0)
